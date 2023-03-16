@@ -1,0 +1,176 @@
+Java:
+
+package com.example.lab2;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Switch;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ImageButton ib = findViewById(R.id.button_round);
+        Switch s = findViewById(R.id.toggle_Switch);
+        s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(s.isChecked()==true){
+                    Toast.makeText(getApplicationContext(),"checked",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Hello World",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+
+
+
+button_pressed
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:shape="oval">
+    <stroke
+        android:width="10dp"
+        android:color="@android:color/holo_orange_light" />
+    <corners android:radius="20dp" />
+    <solid android:color="@android:color/holo_blue_dark"/>
+</shape>
+
+
+
+button_focussed
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:shape="oval">
+    <stroke
+        android:width="30dp"
+        android:color="@android:color/holo_red_dark" />
+    <corners android:radius="40dp" />
+    <solid android:color="@android:color/holo_blue_dark"/>
+</shape>
+
+
+button_default
+
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="16dp"
+    android:shape="oval">
+    <stroke
+        android:width="30dp"
+        android:color="@android:color/holo_red_dark" />
+    <corners android:radius="40dp" />
+    <solid android:color="@android:color/holo_blue_dark"/>
+</shape>
+
+
+button_custom_icon
+
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/button_default"
+        android:state_pressed="true"
+        android:state_enabled="true"/>
+    <item android:drawable="@drawable/button_focused"
+        android:state_focused="true"
+        android:state_enabled="true"/>
+    <item android:drawable="@drawable/button_pressed"
+        android:state_enabled="true"/>
+
+</selector>
+
+
+
+activitymain.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <CalendarView
+            android:id="@+id/DayCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="DuplicateIds" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/button_round"
+                android:layout_width="129dp"
+                android:layout_height="129dp"
+                android:background="@drawable/button_custom_icon"
+                android:text="rounded"
+                android:src="@drawable/button_focused"
+                tools:ignore="DuplicateIds" />
+
+            <Switch
+                android:id="@+id/toggle_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <CalendarView
+            android:id="@+id/DayCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="DuplicateIds" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/button_round"
+                android:layout_width="129dp"
+                android:layout_height="129dp"
+                android:background="@drawable/button_custom_icon"
+                android:text="rounded"
+                android:src="@drawable/button_focused"
+                tools:ignore="DuplicateIds" />
+
+            <Switch
+                android:id="@+id/toggle_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch"
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
